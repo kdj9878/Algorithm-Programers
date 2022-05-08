@@ -6,6 +6,9 @@ import java.util.*;
 
 class Kakao1 {
 
+    /*
+    * 신고 결과 받기
+    * */
     @Test
     void solution() {
         String[] id_list = {"muzi", "frodo", "apeach", "neo"};

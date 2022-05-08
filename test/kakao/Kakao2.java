@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 public class Kakao2 {
 
+    /*
+    * 숫자 문자열과 영단어
+    * */
     @Test
     void test() {
         String new_id = "...!@BaT#*..y.abcdefghijklm";

@@ -1,10 +1,10 @@
-package kakaoBlind;
+package kakao;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-class KakaoBlind1 {
+class Kakao1 {
 
     @Test
     void solution() {

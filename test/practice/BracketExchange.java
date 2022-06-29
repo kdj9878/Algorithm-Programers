@@ -73,7 +73,7 @@ public class BracketExchange {
         return true;
     }
 
-    // 실질적인 재귀 호출 함수
+    // 괄호 뒤집기
     String reverse(String s){
         String returnStr = "";
         for(int i = 0; i < s.length(); i++){
@@ -86,6 +86,8 @@ public class BracketExchange {
         }
         return returnStr;
     }
+    
+    // 실질적인 재귀 함수 호출
     String recursive(String p){
         if(p.equals("")){
             return "";
@@ -101,6 +103,7 @@ public class BracketExchange {
             return u + recursive(v);
         }
         else{
+            // 올바른 문자열이 아닐 경우
             String emptyStr = "";
             emptyStr += "(";
             emptyStr += recursive(v);

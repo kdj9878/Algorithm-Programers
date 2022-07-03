@@ -22,10 +22,21 @@ public class DecimalSearch {
     11과 011은 같은 숫자로 취급합니다.
     */
 
+    /*
+    순열 구하는 알고리즘 참고 사이트
+    https://m.blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=ssang8417&logNo=222147007019
+     */
+
+    /*
+    문제 해결
+    주어진 숫자에 대해 순열을 구해주고 해당 순열의 요소들에 대해 소수인지 판별
+     */
+
     int[] res;
 
     Set<Integer> resSet = new HashSet<>();
 
+    // 순열 구하는 함수
     void permutation(int[] arr, int depth, int r){
         if(depth == r){
             int toInt = intArrToInt(res);
@@ -66,7 +77,7 @@ public class DecimalSearch {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"17", "011", "121"})
+    @ValueSource(strings = {"17", "123", "011", "121"})
     @DisplayName("소수 찾기")
     void decimalSearch(String numbers){
         int answer = 0;
@@ -76,7 +87,7 @@ public class DecimalSearch {
 
         // 1부터 numbers의 길이만큼 차례대로 선택
         for(int i = 1; i <= numbers.length(); i++){
-            res = new int[i];
+            res = new int[i]; // 찾을 요소의 길이
             permutation(intArr, 0, i);
         }
 

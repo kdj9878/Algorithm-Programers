@@ -18,6 +18,12 @@ public class NLeastCommonMultiple {
     arr은 길이 1이상, 15이하인 배열입니다.
     arr의 원소는 100 이하인 자연수입니다.*/
 
+    /* 문제 해결 포인트
+    n개의 숫자들을 소인수 분해를 하였을 때 존재하는 모든 밑과 지수를 구하고
+    해당 밑들 중에서 가장 큰 지수를 가진 요소들만 추출
+    그 후에 필터링한 밑과 지수들을 곱해주면 n개의 숫자들의 최소공배수가 나옴
+     */
+
     // 밑/지수에 관한 정보를 담고있는 ArrayList
     ArrayList<Map<Integer, Integer>> factorList = new ArrayList<>();
 
@@ -44,7 +50,6 @@ public class NLeastCommonMultiple {
 
         int answer = 1;
 
-        // arr 각 요소를 소인수분해함
         for(int i = 0; i < arr.length; i++) {
             factorization(arr[i]);
         }
@@ -64,7 +69,6 @@ public class NLeastCommonMultiple {
             int value = factorMap.get(key);
             answer *= Math.pow(key, value);
         }
-
 
         System.out.println(answer);
     }

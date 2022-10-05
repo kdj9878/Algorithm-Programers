@@ -207,4 +207,38 @@ public class ParkingFeeCalculation {
             return (usedTime - defaultTime) % danwiMinute == 0 ? (int)(usedMinute * danwiPrice) + defaultPrice : (int)(Math.ceil(usedMinute) * danwiPrice) + defaultPrice;
         }
     }
+
+    public int timeToInt(String time) {
+        String temp[] = time.split(":");
+        return Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]);
+    }
+
+    //다른 사람 풀이
+    public int[] solution(int[] fees, String[] records) {
+
+        TreeMap<String, Integer> map = new TreeMap<>();
+
+        for(String record : records) {
+            String temp[] = record.split(" ");
+            //출차를 한 기록이 있으면 결국엔 주차장을 이용한 시간만큼 저장
+            int time = temp[2].equals("IN") ? -1 : 1;
+            time *= timeToInt(temp[0]);
+            map.put(temp[1], map.getOrDefault(temp[1], 0) + time);
+        }
+        int idx = 0, ans[] = new int[map.size()];
+        for(int time : map.values()) {
+            //출차 기록이 없는 경우 1439(23:59)를 더함
+            if(time < 1) time += 1439;
+            //이용 시간에서 기본 시간을 제외
+            time -= fees[0];
+            int cost = fees[1];
+            //기본 시간을 초과했을 경우
+            if(time > 0)
+                cost += (time%fees[2] == 0 ? time/fees[2] : time/fees[2]+1)*fees[3];
+
+            ans[idx++] = cost;
+        }
+        return ans;
+    }
+
 }

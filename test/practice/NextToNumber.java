@@ -14,6 +14,7 @@ public class NextToNumber {
 
     int[] common = {1, 2, 3, 4};
 
+    //처음 풀이
     @Test
     void nextToNumber(){
         int answer = 0;
@@ -31,7 +32,25 @@ public class NextToNumber {
             int mok = chaArr[1]/chaArr[0];
             answer = common[common.length-1] * mok;
         }
+        System.out.println(answer);
+    }
 
+    //리팩토링
+    @Test
+    void nextToNumberRef(){
+        int answer = 0;
+
+        int x = common[1] - common[0];
+        int y = common[2] - common[1];
+
+        //등차수열일 경우
+        if(x == y){
+            answer = common[common.length-1] + y;
+        }
+        //등비수열일 경우
+        else{
+            answer = common[common.length - 1] * common[2] / common[1];
+        }
         System.out.println(answer);
     }
 }

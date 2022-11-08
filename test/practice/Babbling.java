@@ -4,33 +4,26 @@ import org.junit.jupiter.api.Test;
 
 public class Babbling {
 
-    String[] ena_babbling = {"aya", "ye", "woo", "ma"};
+    String[] balum = {"aya", "ye", "woo", "ma"};
+    String[] repBalum = {"ayaaya", "yeye", "woowoo", "mama"};
 
     String[] babbling = {"ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"};
 
     @Test
     void solution() {
         int answer = 0;
-
         for(int i = 0; i < babbling.length; i++){
-            String prevStr = "";
-            for(int j = 0; j < ena_babbling.length;){
-                if(babbling[i].equals("")){
-                    answer++;
-                    break;
-                }
-
-                if(babbling[i].indexOf(ena_babbling[j]) > -1 && !prevStr.equals(ena_babbling[j])){
-                    prevStr = ena_babbling[j];
-                    babbling[i] = babbling[i].replaceFirst(ena_babbling[j], "");
-                    j = 0;
-                    continue;
-                }
-                j++;
+            String tempStr = babbling[i];
+            for(int j = 0; j < repBalum.length; j++){
+                tempStr = tempStr.replace(repBalum[j], "z");
+            }
+            for(int z = 0; z < balum.length; z++){
+                tempStr = tempStr.replace(balum[z], "");
+            }
+            if(tempStr.length() == 0){
+                answer++;
             }
         }
-
-
         System.out.println(answer);;
     }
 }

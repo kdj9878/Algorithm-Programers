@@ -18,8 +18,9 @@ public class Babbling {
                 tempStr = tempStr.replace(repBalum[j], "z");
             }
             for(int z = 0; z < balum.length; z++){
-                tempStr = tempStr.replace(balum[z], "");
+                tempStr = tempStr.replace(balum[z], ".");
             }
+            tempStr = tempStr.replace(".", "");
             if(tempStr.length() == 0){
                 answer++;
             }

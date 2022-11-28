@@ -26,38 +26,20 @@ public class HallOfFame {
 
     @Test
     void hallOfFame(){
-        int[] answer = {};
-        Stack<Integer> stack = new Stack<>();
-        Queue<Integer> queue = new LinkedList<>();
+        int[] answer = new int[score.length];
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
 
         for(int i = 0; i < score.length; i++){
             int val = score[i];
             //명예의 전당에 들어가있는 사람 수 == k
-            if(stack.size() == k){
-                //새로운 스코어보다 작은 사람 내리기
-                boolean flag = false;
-                while(!flag){
-                    if(stack.size() > 0 && stack.peek() < val){
-                        queue.add(stack.pop());
-                        continue;
-                    }
-                    flag = true;
-                }
-                //새로운 사람 전당에 올리기
-                stack.push(val);
-                //새로운 사람보다 점수가 낮은 사람들 전당에 올리기
-                Iterator<Integer> it = queue.iterator();
-                while(it.hasNext() && stack.size() <= k){
-                    System.out.println(it.next());
-                    //stack.push(it.next());
-                }
-                //queue 비우기
-                queue.clear();
-                System.out.println("--------------------------------");
+            if(pq.size() == k){
+                pq.add(val);
+                pq.poll();
             }
             else{
-                stack.push(val);
+                pq.add(val);
             }
+            answer[i] = pq.peek();
         }
         System.out.println(Arrays.toString(answer));
     }

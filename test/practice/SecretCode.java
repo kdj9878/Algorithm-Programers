@@ -28,6 +28,7 @@ public class SecretCode {
     String s = "aukks";
     String skip = "wbqd";
     int index = 5;
+    String answer = "happy";
 
     List<Integer> skipList = new ArrayList<>();
 
@@ -71,6 +72,9 @@ public class SecretCode {
         return returnIndex;
     }
 
+    /**
+     * 내 풀이
+     */
     @Test
     void secretCode(){
         String answer = "";
@@ -84,7 +88,28 @@ public class SecretCode {
             answer += String.valueOf((char)skipedIndex);
 
         }
-        Assertions.assertEquals("happy", answer);
+        Assertions.assertEquals(answer, answer);
+    }
+
+    /**
+     * 다른 사람 풀이
+     */
+    void secretCodeAnother(){
+        StringBuilder answer = new StringBuilder();
+
+        for (char letter : s.toCharArray()) {
+            char temp = letter;
+            int idx = 0;
+            while (idx < index) {
+                temp = temp == 'z' ? 'a' : (char) (temp + 1);
+                if (!skip.contains(String.valueOf(temp))) {
+                    idx += 1;
+                }
+            }
+            answer.append(temp);
+        }
+
+        Assertions.assertEquals(answer, answer.toString());
     }
 
 }

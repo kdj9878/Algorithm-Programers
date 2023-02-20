@@ -3,9 +3,6 @@ package practice;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Joystick {
     /*문제 설명
     조이스틱으로 알파벳 이름을 완성하세요. 맨 처음엔 A로만 이루어져 있습니다.
@@ -37,27 +34,42 @@ public class Joystick {
      *   - 왼쪽으로 갔다가 다시 오른쪽으로 가는 경우
      */
 
-    Map<Integer, Integer> changeCountMap = new HashMap<>();
+    int answer = 0;
 
-    void getChangeCount(String name){
-        char[] charArr = name.toCharArray();
+    void getChangeCount(char[] charArr){
         for(int i = 0; i < charArr.length; i++){
             int toInt = (int)charArr[i];
             int cost = Math.min(Math.abs(65 - toInt), Math.abs(91 - toInt));
-            //알파벳이 A인 경우 이어져있는지 확인
-            if(cost == 0){
-
-            }
-            changeCountMap.put(i, cost);
+            answer += cost;
         }
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"JEROEN", "JAN"})
-    void joystick(String name){
-        getChangeCount(name);
+    int getMoveCount(char[] charArr){
+        //오른쪽으로 쭉 갔을 때의 이동 횟수
+        int move = charArr.length - 1;
+        for(int i = 0; i < charArr.length; i++){
+            //다음 알파벳이 A인 경우 이어져있는지 확인
+            if(i < charArr.length - 1 && charArr[i+1] == 'A'){
+                int end = i+1;
+                while(end < charArr.length && charArr[end] == 'A') {
+                    end++;
+                }
+                move = Math.min(move, i*2 + (charArr.length - end));
+                move = Math.min(move, (charArr.length - end)*2 + i);
+            }
+        }
+        return move;
+    }
 
-        System.out.println(changeCountMap);
+    @ParameterizedTest
+    @ValueSource(strings = { "JEROEN","JAN","PIZAAABAAPO"})
+    void joystick(String name){
+        char[] charArray = name.toCharArray();
+        //각 문자열의 위*아래 조이스틱 가동 횟수 구하기
+        getChangeCount(charArray);
+        //좌*우 이동 횟수 구하기
+        int move = getMoveCount(charArray);
+        System.out.println(answer + move);
 
     }
 }

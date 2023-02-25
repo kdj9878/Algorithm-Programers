@@ -56,6 +56,7 @@ public class RoughKeyboard {
                 }
                 if(indexMin == 101){
                     answer[z] = -1;
+                    break; //특정 단어를 keymap에서 찾지 못했을 경우 결국에는 단어를 만들지 못하므로 break;
                 }
                 else{
                     answer[z] += indexMin+1;

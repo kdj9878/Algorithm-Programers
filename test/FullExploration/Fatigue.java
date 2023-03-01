@@ -23,6 +23,7 @@ public class Fatigue {
     서로 다른 던전의 ["최소 필요 피로도", "소모 피로도"]가 서로 같을 수 있습니다.*/
 
     int k = 80;
+    int curFatigue;
     int[][] dungeons = {{80,20},{50,40},{30,10}};
 
     int answer = 0;
@@ -32,25 +33,34 @@ public class Fatigue {
     @Test
     void fatigue(){
         arr = new int[n];
-        for (int i = 0; i < n; i++) arr[i] = i+1;
+        for (int i = 0; i < n; i++) arr[i] = i;
         ch = new int[n];
         pm = new int[n];
-
-        DFS(0);
+        DFS(0, k);
+        System.out.println(answer);
     }
 
-    public void DFS(int L) {
-        if (L == n) { // m개 만큼 수를 뽑았다면 입력된 순열을 출력
-            for (int x : pm) System.out.print(x + " ");
-            System.out.println();
-        } else { // 아직 덜 뽑았다면 다음 수를 뽑아줌
+    public void DFS(int L, int k) {
+        if (L == n) {
+            int curFatigue = k;
+            int num = 0;
+            for (int x = 0; x < pm.length; x++) {
+                if(dungeons[pm[x]][0] <= curFatigue){
+                    num++;
+                    curFatigue -= dungeons[pm[x]][1];
+                }
+                else{
+                    break;
+                }
+            }
+            answer = Math.max(num, answer);
+        } else {
             for (int i = 0; i < n; i++) {
-                // 체크하지 않은, 곧 이전에 뽑지 않은 수만 다음 재귀함수로
                 if (ch[i] == 0) {
-                    ch[i] = 1; // 뽑았으니 체크
-                    pm[L] = arr[i]; // 뽑은 수를 순열에 추가
-                    DFS(L + 1); // 다음 수를 뽑으러
-                    ch[i] = 0; // 재귀함수가 끝났다면 현재 뽑은 수를 체크해제
+                    ch[i] = 1;
+                    pm[L] = arr[i];
+                    DFS(L + 1, k);
+                    ch[i] = 0;
                 }
             }
         }

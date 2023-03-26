@@ -57,20 +57,18 @@ public class WalkInThePark {
     }
 
     boolean move(String direction){
-        boolean state = true;
         if(direction.equals("E")){
-            state = RIGHT();
+            return RIGHT();
         }
         else if(direction.equals("W")){
-            state = LEFT();
+            return LEFT();
         }
         else if(direction.equals("N")){
-            state = UP();
+            return UP();
         }
         else{
-            state = DOWN();
+            return DOWN();
         }
-        return state;
     }
 
     boolean RIGHT(){

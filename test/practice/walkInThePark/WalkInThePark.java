@@ -1,14 +1,9 @@
-package practice;
+package practice.walkInThePark;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 public class WalkInThePark {
-
-    String[] park = {"OSO","OOO","OXO","OOO"};
-
-    String[] routes = {"E 2","S 3","W 1"};
 
     int[] curPlace = new int[2];
     int[] tempPlace = new int[2];
@@ -124,10 +119,29 @@ public class WalkInThePark {
     }
 
     @Test
-    void walkInThePark(){
+    void walkInTheParkTest1(){
+        String[] park = {"SOO","OOO","OOO"};
+        String[] routes = {"E 2","S 2","W 1"};
         init(park);
         start(routes);
+        Assertions.assertArrayEquals(new int[]{2,1}, curPlace);
+    }
 
-        System.out.println(Arrays.toString(curPlace));
+    @Test
+    void walkInTheParkTest2(){
+        String[] park = {"SOO","OXX","OOO"};
+        String[] routes = {"E 2","S 2","W 1"};
+        init(park);
+        start(routes);
+        Assertions.assertArrayEquals(new int[]{0,1}, curPlace);
+    }
+
+    @Test
+    void walkInTheParkTest3(){
+        String[] park = {"OSO","OOO","OXO","OOO"};
+        String[] routes = {"E 2","S 3","W 1"};
+        init(park);
+        start(routes);
+        Assertions.assertArrayEquals(new int[]{0,0}, curPlace);
     }
 }

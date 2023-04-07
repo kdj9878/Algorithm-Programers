@@ -1,8 +1,13 @@
-package practice;
+package practice.lv1;
 
 import org.junit.jupiter.api.Test;
 
 public class TopCoat {
+
+    /**
+     * 덧칠하기
+     * https://school.programmers.co.kr/learn/courses/30/lessons/161989
+     */
 
     /*문제 설명
     어느 학교에 페인트가 칠해진 길이가 n미터인 벽이 있습니다. 벽에 동아리 · 학회 홍보나 회사 채용 공고 포스터 등을 게시하기 위해 테이프로 붙였다가 철거할 때 떼는 일이 많고 그 과정에서 페인트가 벗겨지곤 합니다.

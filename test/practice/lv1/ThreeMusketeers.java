@@ -1,8 +1,13 @@
-package practice;
+package practice.lv1;
 
 import org.junit.jupiter.api.Test;
 
 public class ThreeMusketeers {
+
+    /**
+     * 삼총사
+     * https://school.programmers.co.kr/learn/courses/30/lessons/131705
+     */
 
     int count = 0;
 

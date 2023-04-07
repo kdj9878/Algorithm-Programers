@@ -1,9 +1,14 @@
-package practice;
+package practice.lv2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TwoxN {
+
+    /**
+     * 2 x n 타일링
+     * https://school.programmers.co.kr/learn/courses/30/lessons/12900
+     */
 
     /*가로 길이가 2이고 세로의 길이가 1인 직사각형모양의 타일이 있습니다.
     이 직사각형 타일을 이용하여 세로의 길이가 2이고 가로의 길이가 n인 바닥을 가득 채우려고 합니다.

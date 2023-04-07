@@ -1,4 +1,4 @@
-package practice;
+package practice.lv1;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TheNearestSameLetter {
+
+    /**
+     * 가장 가까운 같은 글자
+     * https://school.programmers.co.kr/learn/courses/30/lessons/142086
+     */
 
     /*문제 설명
     문자열 s가 주어졌을 때, s의 각 위치마다 자신보다 앞에 나왔으면서, 자신과 가장 가까운 곳에 있는 같은 글자가 어디 있는지 알고 싶습니다.

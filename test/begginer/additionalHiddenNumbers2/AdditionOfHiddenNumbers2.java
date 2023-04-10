@@ -1,26 +1,15 @@
-package begginer;
+package begginer.additionalHiddenNumbers2;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class AdditionOfHiddenNumbers2 {
-    /*문제 설명
-    문자열 my_string이 매개변수로 주어집니다. my_string은 소문자, 대문자, 자연수로만 구성되어있습니다. my_string안의 자연수들의 합을 return하도록 solution 함수를 완성해주세요.
-
-    제한사항
-    1 ≤ my_string의 길이 ≤ 1,000
-    1 ≤ my_string 안의 자연수 ≤ 1000
-    연속된 수는 하나의 숫자로 간주합니다.
-    000123과 같이 0이 선행하는 경우는 없습니다.
-    문자열에 자연수가 없는 경우 0을 return 해주세요.*/
 
     /**
      * 기존 로직(제출 시 테스트 케이스 2번 실패)
      * @param my_string
      */
-    @ParameterizedTest
-    @ValueSource(strings = "1000")
-    void additionalOfHiddenNumbers(String my_string){
+    int myoExplanation(String my_string){
         int answer = 0;
         boolean checkFlag = false;
         String tempStr = "";
@@ -46,7 +35,7 @@ public class AdditionOfHiddenNumbers2 {
                 tempStr = "";
             }
         }
-        System.out.println(answer);
+        return answer;
     }
 
     private boolean isNumber(String str){
@@ -58,13 +47,47 @@ public class AdditionOfHiddenNumbers2 {
         }
     }
 
+    @Test
+    void myExplanationTestCase1(){
+        String my_string1 = "aAb1B2cC34oOp";
+        int result = myoExplanation(my_string1);
+        Assertions.assertEquals(37, result);
+    }
+
+    @Test
+    void myExplanationTestCase2(){
+        String my_string2 = "1a2b3c4d123Z";
+        int result = myoExplanation(my_string2);
+        Assertions.assertEquals(133, result);
+    }
+
+    @Test
+    void otherTestCase1(){
+        String my_string1 = "1000";
+        int result = otherPeopleExplanation(my_string1);
+        Assertions.assertEquals(1000, result);
+    }
+
+    @Test
+    void otherTestCase2(){
+        String my_string2 = "aAb1B2cC34oOp";
+        int result = otherPeopleExplanation(my_string2);
+        Assertions.assertEquals(37, result);
+    }
+
+    @Test
+    void otherTestCase3(){
+        String my_string3 = "1a2b3c4d123Z";
+        int result = otherPeopleExplanation(my_string3);
+        Assertions.assertEquals(133, result);
+    }
+
+
     /**
      * 도움 받은 풀이
      * @param my_string
      */
-    @ParameterizedTest
-    @ValueSource(strings = {"1000","aAb1B2cC34oOp", "1a2b3c4d123Z"})
-    void additionalOfHiddenNumbers2(String my_string){
+    int otherPeopleExplanation(String my_string){
         int answer = 0;
         String[] arr = my_string.replaceAll("[^0-9]", " ").split(" ");
         for(String str : arr){
@@ -72,6 +95,6 @@ public class AdditionOfHiddenNumbers2 {
                 answer += Integer.parseInt(str);
             }
         }
-        System.out.println(answer);
+        return answer;
     }
 }

@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 
 public class Fatigue {
 
+    /**
+     * 피로도
+     * https://school.programmers.co.kr/learn/courses/30/lessons/87946
+     */
+
     /*문제 설명
     XX게임에는 피로도 시스템(0 이상의 정수로 표현합니다)이 있으며, 일정 피로도를 사용해서 던전을 탐험할 수 있습니다.
     이때, 각 던전마다 탐험을 시작하기 위해 필요한 "최소 필요 피로도"와 던전 탐험을 마쳤을 때 소모되는 "소모 피로도"가 있습니다.
